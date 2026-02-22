@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chá de Casa Nova - Nossa Wishlist</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Paleta de Cores Personalizada (Grêmio + Romântico) */
+        :root {
+            /* Azul mais vibrante, estilo Grêmio */
+            --azul-gremio: #0D80BF; 
+            /* Mantendo o rosa suave para o contraste romântico */
+            --rosa-blush: #FFC8DD;
+            --creme: #FFF7F8;
+            --texto-escuro: #2C3E50;
+            --texto-claro: #7A7A7A;
+        }
+
+        /* Reset e Configurações Gerais */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: var(--creme); 
+            font-family: 'Lato', sans-serif; 
+            color: var(--texto-escuro);
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 3rem 2rem;
+            /* Borda com o azul do Grêmio */
+            border: 3px solid var(--azul-gremio);
+        }
+
+        /* Topo: Foto e Títulos */
+        .header-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Espaço para a foto do casal */
+        .couple-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            /* Borda interna rosa e externa azul */
+            border: 4px solid var(--rosa-blush);
+            outline: 4px solid var(--azul-gremio);
+            padding: 3px;
+            margin: 0 auto 1.5rem auto;
+            background-color: var(--azul-gremio);
+            box-shadow: 0 6px 20px rgba(13, 128, 191, 0.25);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--texto-escuro);
+            margin-bottom: 0.5rem;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: var(--texto-claro);
+            font-weight: 300;
+        }
+
+        /* Seção do PIX Elegante */
+        .pix-section {
+            /* Gradiente mais marcante com o azul novo */
+            background: linear-gradient(135deg, var(--azul-gremio) 100%, #ffffff 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto 3rem auto;
+            box-shadow: 0 8px 25px rgba(13, 128, 191, 0.2);
+            border: 1px solid rgba(13, 128, 191, 0.1);
+        }
+
+        .pix-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff; /* Título branco para destacar no fundo azul */
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .pix-key {
+            background-color: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: var(--azul-gremio); /* Chave na cor do time */
+            border: 2px dashed var(--azul-gremio);
+            margin-bottom: 1rem;
+            word-break: break-all;
+            font-weight: bold;
+        }
+        
+        .pix-details {
+             color: var(--texto-escuro);
+             font-size: 0.9rem;
+             background: rgba(255,255,255,0.7);
+             display: inline-block;
+             padding: 5px 15px;
+             border-radius: 20px;
+        }
+
+        /* Grid da Wishlist */
+        .wishlist {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        /* Cards Estilizados */
+        .card {
+            background: #fff;
+            border: 1px solid rgba(13, 128, 191, 0.15);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: var(--azul-gremio); /* Topo do card azul quando passa o mouse */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(13, 128, 191, 0.15);
+            border-color: var(--azul-gremio);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background-color: var(--creme);
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .shopee-btn {
+            background-color: var(--azul-gremio); /* Botão azul vibrante */
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: 2px solid var(--azul-gremio);
+        }
+
+        .shopee-btn:hover {
+            background-color: white;
+            color: var(--azul-gremio);
+            box-shadow: 0 5px 15px rgba(13, 128, 191, 0.3);
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .container { padding: 2rem 1rem; }
+            .couple-photo { width: 140px; height: 140px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header-section">
+            <img src="imagens/nois.png" alt="Foto do Casal" class="couple-photo">
+            
+            <h1>Chá de Casa Nova Laís & Luan</h1>
+            <p class="subtitle">Com muito amor (e sofrimento pelo Grêmio!), estamos montando nosso cantinho na terra dos doces 🧁.</p>
+        </div>
+
+        <div class="pix-section">
+            <h2 class="pix-title">Quer fazer um PIX pra gente? Ajuda e muito meu nóbrega! 💙</h2>
+            <p style="margin-bottom: 1rem; font-size: 0.95rem; color: #f0f8ff;">Qualquer valor nos ajuda a escalar essa tabela!</p>
+            
+            <div class="pix-key">luancaminha@gmail.com</div>
+            
+            <div class="pix-details">Nome: Luan Caminha Luiz | Banco: Banco Inter</div>
+        </div>
+
+        <ul class="wishlist">
+            
+            <li class="card">
+                <img src="imagens/panodeprato.webp" alt="Pano de prato" class="card-img">
+                <div class="card-title">Pano de prato</div>
+                <a href="https://shopee.com.br/search?keyword=Kit%20Pano%20de%20prato" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/escorredor.jpg" alt="Escorredor de louça" class="card-img">
+                <div class="card-title">Escorredor de louça</div>
+                <a href="https://shopee.com.br/search?keyword=Escorredor%20de%20lou%C3%A7a" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/colhersili.webp"Kit de colher" class="card-img">
+                <div class="card-title">Kit de colheres (Bambu/Silicone)</div>
+                <a href="https://shopee.com.br/search?keyword=Kit%20colheres%20silicone%20bambu" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/talheresgaveta.webp" alt="Porta talheres de gaveta" class="card-img">
+                <div class="card-title">Porta talheres de gaveta</div>
+                <a href="https://shopee.com.br/search?keyword=Organiz%20porta%20talheres%20gaveta" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <!-- <li class="card">
+                <img src="imagens/pan" alt="Jogo de Panelas" class="card-img">
+                <div class="card-title">Jogo de Panelas</div>
+                <a href="https://shopee.com.br/search?keyword=Jogo%20de%20panelas%20antiaderente" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li> -->
+
+            <li class="card">
+                <img src="imagens/pratokit.webp" alt="Kit de Pratos" class="card-img">
+                <div class="card-title">Kit de Pratos</div>
+                <a href="https://shopee.com.br/search?keyword=Jogo%20de%20pratos%20jantar" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/tacas.webp" alt="Jogo de Taças" class="card-img">
+                <div class="card-title">Jogo de Taças</div>
+                <a href="https://shopee.com.br/search?keyword=Jogo%20de%20ta%C3%A7as%20agua%20vinho" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/saleiro.webp" alt="Saleiro" class="card-img">
+                <div class="card-title">Saleiro de mesa</div>
+                <a href="https://shopee.com.br/search?keyword=Saleiro%20de%20mesa" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/portatemperos.webp" alt="Porta temperos" class="card-img">
+                <div class="card-title">Porta temperos giratório</div>
+                <a href="https://shopee.com.br/search?keyword=Porta%20temperos%20giratorio" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/toalhaskit.webp" alt="Jogo de Toalhas" class="card-img">
+                <div class="card-title">Jogo de Toalhas de Banho</div>
+                <a href="https://shopee.com.br/search?keyword=Jogo%20de%20toalhas%20banho%20algodao" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <!-- <li class="card">
+                <img src="https://m.media-amazon.com/images/I/71-X2kR-D+L._AC_SL1500_.jpg" alt="Pano de copa/louça" class="card-img">
+                <div class="card-title">Pano de copa/louça</div>
+                <a href="https://shopee.com.br/search?keyword=Kit%20pano%20de%20copa" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li> -->
+
+            <li class="card">
+                <img src="imagens/tapetebanheiro.webp" alt="Tapete para banheiro" class="card-img">
+                <div class="card-title">Jogo de Tapete para Banheiro</div>
+                <a href="https://shopee.com.br/search?keyword=Jogo%20tapete%20banheiro%20antiderrapante" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <!-- <li class="card">
+                <img src="https://m.media-amazon.com/images/I/71+Cg+G+uIL._AC_SL1500_.jpg" alt="Kit de facas" class="card-img">
+                <div class="card-title">Kit de facas com cepo</div>
+                <a href="https://shopee.com.br/search?keyword=Jogo%20de%20facas%20cepo" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li> -->
+
+            <li class="card">
+                <img src="imagens/fruteira.webp" alt="Fruteira" class="card-img">
+                <div class="card-title">Fruteira de mesa/chão</div>
+                <a href="https://shopee.com.br/search?keyword=Fruteira%20cozinha%20metal" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/mixer3em1.webp" alt="Mixer" class="card-img">
+                <div class="card-title">Mixer de mão</div>
+                <a href="https://shopee.com.br/search?keyword=mixer%203%20em%201" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/escorredormassa.webp" alt="Escorredor de massa" class="card-img">
+                <div class="card-title">Escorredor de massa inox</div>
+                <a href="https://shopee.com.br/search?keyword=Escorredor%20de%20massa%20inox" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/kitlavabo.webp" alt="Kit Lavabo" class="card-img">
+                <div class="card-title">Kit Lavabo</div>
+                <a href="https://shopee.com.br/search?keyword=Kit%20banheiro%20porta%20escova%20sabonete" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/chaleiraeletrica.jpg" alt="Chaleira" class="card-img">
+                <div class="card-title">Chaleira (Inox ou Elétrica)</div>
+                <a href="https://shopee.com.br/search?keyword=Chaleira%20inox%20eletrica" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/potehermetico.webp" alt="Kit de Potes herméticos" class="card-img">
+                <div class="card-title">Kit de Potes herméticos</div>
+                <a href="https://shopee.com.br/search?keyword=Kit%20potes%20hermeticos%20vidro" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/travessa.webp" alt="Travessa Marinex" class="card-img">
+                <div class="card-title">Travessa de vidro (tipo Marinex)</div>
+                <a href="https://shopee.com.br/search?keyword=Travessa%20refrataria%20vidro" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/kitformas.webp" alt="Forma de bolo/carne" class="card-img">
+                <div class="card-title">Forma (Assadeira antiaderente)</div>
+                <a href="https://shopee.com.br/search?keyword=Assadeira%20antiaderente%20retangular" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/lixeira.webp" alt="Lixeira" class="card-img">
+                <div class="card-title">Lixeira para cozinha/banheiro</div>
+                <a href="https://shopee.com.br/search?keyword=Lixeira%20inox%205l" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+            <li class="card">
+                <img src="imagens/descansopanela.png" alt="Descanso de panela" class="card-img">
+                <div class="card-title">Kit Descanso de panela</div>
+                <a href="https://shopee.com.br/search?keyword=Kit%20descanso%20de%20panela%20silicone%20bambu" target="_blank" class="shopee-btn">Ver na Shopee</a>
+            </li>
+
+        </ul>
+    </div>
+
+</body>
+</html>
