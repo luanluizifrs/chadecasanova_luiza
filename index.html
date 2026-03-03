@@ -12,13 +12,12 @@
     <style>
         /* Paleta de Cores Personalizada (Grêmio + Romântico) */
         :root {
-            /* Azul mais vibrante, estilo Grêmio */
             --azul-gremio: #0D80BF; 
-            /* Mantendo o rosa suave para o contraste romântico */
             --rosa-blush: #FFC8DD;
             --creme: #FFF7F8;
             --texto-escuro: #2C3E50;
             --texto-claro: #7A7A7A;
+            --verde-sucesso: #27ae60;
         }
 
         /* Reset e Configurações Gerais */
@@ -39,172 +38,85 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             padding: 3rem 2rem;
-            /* Borda com o azul do Grêmio */
             border: 3px solid var(--azul-gremio);
         }
 
         /* Topo: Foto e Títulos */
-        .header-section {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
+        .header-section { text-align: center; margin-bottom: 3rem; }
 
-        /* Espaço para a foto do casal */
         .couple-photo {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            /* Borda interna rosa e externa azul */
-            border: 4px solid var(--rosa-blush);
-            outline: 4px solid var(--azul-gremio);
-            padding: 3px;
-            margin: 0 auto 1.5rem auto;
-            background-color: var(--azul-gremio);
+            width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--rosa-blush); outline: 4px solid var(--azul-gremio);
+            padding: 3px; margin: 0 auto 1.5rem auto; background-color: var(--azul-gremio);
             box-shadow: 0 6px 20px rgba(13, 128, 191, 0.25);
         }
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            color: var(--texto-escuro);
-            margin-bottom: 0.5rem;
-        }
-
-        p.subtitle {
-            font-size: 1.1rem;
-            color: var(--texto-claro);
-            font-weight: 300;
-        }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--texto-escuro); margin-bottom: 0.5rem; }
+        p.subtitle { font-size: 1.1rem; color: var(--texto-claro); font-weight: 300; }
 
         /* Seção do PIX Elegante */
         .pix-section {
-            /* Gradiente mais marcante com o azul novo */
             background: linear-gradient(135deg, var(--azul-gremio) 100%, #ffffff 100%);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto 3rem auto;
-            box-shadow: 0 8px 25px rgba(13, 128, 191, 0.2);
+            border-radius: 15px; padding: 2rem; text-align: center; max-width: 500px;
+            margin: 0 auto 3rem auto; box-shadow: 0 8px 25px rgba(13, 128, 191, 0.2);
             border: 1px solid rgba(13, 128, 191, 0.1);
         }
 
-        .pix-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #fff; /* Título branco para destacar no fundo azul */
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
-
+        .pix-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
         .pix-key {
-            background-color: #ffffff;
-            padding: 12px;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 1.1rem;
-            color: var(--azul-gremio); /* Chave na cor do time */
-            border: 2px dashed var(--azul-gremio);
-            margin-bottom: 1rem;
-            word-break: break-all;
-            font-weight: bold;
+            background-color: #ffffff; padding: 12px; border-radius: 8px; font-family: monospace;
+            font-size: 1.1rem; color: var(--azul-gremio); border: 2px dashed var(--azul-gremio);
+            margin-bottom: 1rem; word-break: break-all; font-weight: bold;
         }
-        
-        .pix-details {
-             color: var(--texto-escuro);
-             font-size: 0.9rem;
-             background: rgba(255,255,255,0.7);
-             display: inline-block;
-             padding: 5px 15px;
-             border-radius: 20px;
-        }
+        .pix-details { color: var(--texto-escuro); font-size: 0.9rem; background: rgba(255,255,255,0.7); display: inline-block; padding: 5px 15px; border-radius: 20px; }
 
         /* Grid da Wishlist */
-        .wishlist {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 25px;
-        }
+        .wishlist { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; }
 
         /* Cards Estilizados */
         .card {
-            background: #fff;
-            border: 1px solid rgba(13, 128, 191, 0.15);
-            border-radius: 15px;
-            padding: 15px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            background: #fff; border: 1px solid rgba(13, 128, 191, 0.15); border-radius: 15px;
+            padding: 15px; text-align: center; display: flex; flex-direction: column;
+            transition: all 0.3s ease; position: relative; overflow: hidden;
         }
 
         .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 4px;
-            background: var(--azul-gremio); /* Topo do card azul quando passa o mouse */
-            opacity: 0;
-            transition: opacity 0.3s;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: var(--azul-gremio); opacity: 0; transition: opacity 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(13, 128, 191, 0.15);
-            border-color: var(--azul-gremio);
-        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(13, 128, 191, 0.15); border-color: var(--azul-gremio); }
+        .card:hover::before { opacity: 1; }
 
-        .card:hover::before {
-            opacity: 1;
-        }
+        .card-img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; background-color: var(--creme); }
+        .card-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; margin-bottom: 15px; flex-grow: 1; display: flex; align-items: center; justify-content: center; }
 
-        .card-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            background-color: var(--creme);
-        }
-
-        .card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        /* Container de Botões */
+        .botoes-container { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
 
         .shopee-btn {
-            background-color: var(--azul-gremio); /* Botão azul vibrante */
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            border: 2px solid var(--azul-gremio);
+            background-color: transparent; color: var(--azul-gremio); text-decoration: none;
+            padding: 10px; border-radius: 25px; font-weight: 700; font-size: 0.9rem;
+            transition: all 0.3s; border: 2px solid var(--azul-gremio);
+        }
+        .shopee-btn:hover { background-color: var(--azul-gremio); color: white; }
+
+        .btn-reservar {
+            background-color: var(--verde-sucesso); color: white; border: none; padding: 12px;
+            border-radius: 25px; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.3s;
+        }
+        .btn-reservar:hover { background-color: #219653; box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3); }
+
+        /* --- ESTILO PARA ITEM RESERVADO (Automático via JS) --- */
+        .card.reservado {
+            opacity: 0.5; filter: grayscale(100%); pointer-events: none; border-color: #ccc; box-shadow: none;
+        }
+        .card.reservado .botoes-container { display: none; }
+        .card.reservado::after {
+            content: "✅ Reservado"; display: block; margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #27ae60;
         }
 
-        .shopee-btn:hover {
-            background-color: white;
-            color: var(--azul-gremio);
-            box-shadow: 0 5px 15px rgba(13, 128, 191, 0.3);
-        }
-
-        /* Responsividade */
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            .container { padding: 2rem 1rem; }
-            .couple-photo { width: 140px; height: 140px; }
-        }
+        @media (max-width: 600px) { h1 { font-size: 2.2rem; } .container { padding: 2rem 1rem; } .couple-photo { width: 140px; height: 140px; } }
     </style>
 </head>
 <body>
@@ -213,7 +125,6 @@
         
         <div class="header-section">
             <img src="imagens/nois.png" alt="Foto do Casal" class="couple-photo">
-            
             <h1>Chá de Casa Nova Laís & Luan</h1>
             <p class="subtitle">Com muito amor (e sofrimento pelo Grêmio!), estamos montando nosso cantinho na terra dos doces 🧁.</p>
         </div>
@@ -221,267 +132,411 @@
         <div class="pix-section">
             <h2 class="pix-title">Quer fazer um PIX pra gente? Ajuda e muito meu nóbrega! 💙</h2>
             <p style="margin-bottom: 1rem; font-size: 0.95rem; color: #f0f8ff;">Qualquer valor nos ajuda a escalar essa tabela!</p>
-            
             <div class="pix-key">luancaminha@gmail.com</div>
-            
             <div class="pix-details">Nome: Luan Caminha Luiz | Banco: Banco Inter</div>
         </div>
 
         <ul class="wishlist">
             
-            <li class="card">
+            <li class="card" data-id="pano_prato">
                 <img src="imagens/panodeprato.webp" alt="Pano de prato" class="card-img">
                 <div class="card-title">Pano de prato</div>
-                <a href="https://shopee.com.br/search?keyword=Kit%20Pano%20de%20prato" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Kit%20Pano%20de%20prato" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('pano_prato')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <!-- <li class="card">
-                <img src="imagens/escorredor.jpg" alt="Escorredor de louça" class="card-img">
-                <div class="card-title">Escorredor de louça</div>
-                <a href="https://shopee.com.br/search?keyword=Escorredor%20de%20lou%C3%A7a" target="_blank" class="shopee-btn">Ver na Shopee</a>
-            </li> -->
-
-            <li class="card">
-                <img src="imagens/colhersili.webp"Kit de colher" class="card-img">
+            <li class="card" data-id="kit_colheres">
+                <img src="imagens/colhersili.webp" alt="Kit de colher" class="card-img">
                 <div class="card-title">Kit de colheres (Bambu/Silicone)</div>
-                <a href="https://shopee.com.br/search?keyword=Kit%20colheres%20silicone%20bambu" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Kit%20colheres%20silicone%20bambu" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('kit_colheres')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="porta_talheres">
                 <img src="imagens/talheresgaveta.webp" alt="Porta talheres de gaveta" class="card-img">
                 <div class="card-title">Porta talheres de gaveta</div>
-                <a href="https://shopee.com.br/search?keyword=Organiz%20porta%20talheres%20gaveta" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Organiz%20porta%20talheres%20gaveta" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('porta_talheres')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <!-- <li class="card">
-                <img src="imagens/pan" alt="Jogo de Panelas" class="card-img">
-                <div class="card-title">Jogo de Panelas</div>
-                <a href="https://shopee.com.br/search?keyword=Jogo%20de%20panelas%20antiaderente" target="_blank" class="shopee-btn">Ver na Shopee</a>
-            </li> -->
-
-            <li class="card">
+            <li class="card" data-id="kit_pratos">
                 <img src="imagens/pratokit.webp" alt="Kit de Pratos" class="card-img">
                 <div class="card-title">Kit de Pratos</div>
-                <a href="https://shopee.com.br/search?keyword=Jogo%20de%20pratos%20jantar" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Jogo%20de%20pratos%20jantar" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('kit_pratos')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="jogo_tacas">
                 <img src="imagens/tacas.webp" alt="Jogo de Taças" class="card-img">
                 <div class="card-title">Jogo de Taças</div>
-                <a href="https://shopee.com.br/search?keyword=Jogo%20de%20ta%C3%A7as%20agua%20vinho" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Jogo%20de%20ta%C3%A7as%20agua%20vinho" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('jogo_tacas')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="saleiro">
                 <img src="imagens/saleiro.webp" alt="Saleiro" class="card-img">
                 <div class="card-title">Saleiro de mesa</div>
-                <a href="https://shopee.com.br/search?keyword=Saleiro%20de%20mesa" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Saleiro%20de%20mesa" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('saleiro')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="porta_temperos">
                 <img src="imagens/portatemperos.webp" alt="Porta temperos" class="card-img">
                 <div class="card-title">Porta temperos giratório</div>
-                <a href="https://shopee.com.br/search?keyword=Porta%20temperos%20giratorio" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Porta%20temperos%20giratorio" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('porta_temperos')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="toalhas">
                 <img src="imagens/toalhaskit.webp" alt="Jogo de Toalhas" class="card-img">
                 <div class="card-title">Jogo de Toalhas de Banho</div>
-                <a href="https://shopee.com.br/search?keyword=Jogo%20de%20toalhas%20banho%20algodao" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Jogo%20de%20toalhas%20banho%20algodao" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('toalhas')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <!-- <li class="card">
-                <img src="https://m.media-amazon.com/images/I/71-X2kR-D+L._AC_SL1500_.jpg" alt="Pano de copa/louça" class="card-img">
-                <div class="card-title">Pano de copa/louça</div>
-                <a href="https://shopee.com.br/search?keyword=Kit%20pano%20de%20copa" target="_blank" class="shopee-btn">Ver na Shopee</a>
-            </li> -->
-
-            <li class="card">
+            <li class="card" data-id="tapete_banheiro">
                 <img src="imagens/tapetebanheiro.webp" alt="Tapete para banheiro" class="card-img">
                 <div class="card-title">Jogo de Tapete para Banheiro</div>
-                <a href="https://shopee.com.br/search?keyword=Jogo%20tapete%20banheiro%20antiderrapante" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Jogo%20tapete%20banheiro%20antiderrapante" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('tapete_banheiro')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <!-- <li class="card">
-                <img src="https://m.media-amazon.com/images/I/71+Cg+G+uIL._AC_SL1500_.jpg" alt="Kit de facas" class="card-img">
-                <div class="card-title">Kit de facas com cepo</div>
-                <a href="https://shopee.com.br/search?keyword=Jogo%20de%20facas%20cepo" target="_blank" class="shopee-btn">Ver na Shopee</a>
-            </li> -->
-
-            <li class="card">
+            <li class="card" data-id="fruteira">
                 <img src="imagens/fruteira.webp" alt="Fruteira" class="card-img">
                 <div class="card-title">Fruteira de mesa/chão</div>
-                <a href="https://shopee.com.br/search?keyword=Fruteira%20cozinha%20metal" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Fruteira%20cozinha%20metal" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('fruteira')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="mixer">
                 <img src="imagens/mixer3em1.webp" alt="Mixer" class="card-img">
                 <div class="card-title">Mixer de mão</div>
-                <a href="https://shopee.com.br/search?keyword=mixer%203%20em%201" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=mixer%203%20em%201" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('mixer')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="escorredor_massa">
                 <img src="imagens/escorredormassa.webp" alt="Escorredor de massa" class="card-img">
                 <div class="card-title">Escorredor de massa inox</div>
-                <a href="https://shopee.com.br/search?keyword=Escorredor%20de%20massa%20inox" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Escorredor%20de%20massa%20inox" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('escorredor_massa')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="kit_lavabo">
                 <img src="imagens/kitlavabo.webp" alt="Kit Lavabo" class="card-img">
                 <div class="card-title">Kit Lavabo</div>
-                <a href="https://shopee.com.br/search?keyword=Kit%20banheiro%20porta%20escova%20sabonete" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Kit%20banheiro%20porta%20escova%20sabonete" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('kit_lavabo')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="chaleira">
                 <img src="imagens/chaleiraeletrica.jpg" alt="Chaleira" class="card-img">
                 <div class="card-title">Chaleira (Inox ou Elétrica)</div>
-                <a href="https://shopee.com.br/search?keyword=Chaleira%20inox%20eletrica" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Chaleira%20inox%20eletrica" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('chaleira')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="kit_potes">
                 <img src="imagens/potehermetico.webp" alt="Kit de Potes herméticos" class="card-img">
                 <div class="card-title">Kit de Potes herméticos</div>
-                <a href="https://shopee.com.br/search?keyword=Kit%20potes%20hermeticos%20vidro" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Kit%20potes%20hermeticos%20vidro" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('kit_potes')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="travessa">
                 <img src="imagens/travessa.webp" alt="Travessa Marinex" class="card-img">
                 <div class="card-title">Travessa de vidro (tipo Marinex)</div>
-                <a href="https://shopee.com.br/search?keyword=Travessa%20refrataria%20vidro" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Travessa%20refrataria%20vidro" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('travessa')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="forma">
                 <img src="imagens/kitformas.webp" alt="Forma de bolo/carne" class="card-img">
                 <div class="card-title">Forma (Assadeira antiaderente)</div>
-                <a href="https://shopee.com.br/search?keyword=Assadeira%20antiaderente%20retangular" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Assadeira%20antiaderente%20retangular" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('forma')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="lixeira">
                 <img src="imagens/lixeira.webp" alt="Lixeira Cozinha" class="card-img">
                 <div class="card-title">Lixeira para cozinha/banheiro</div>
-                <a href="https://shopee.com.br/search?keyword=Lixeira%20inox%205l" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Lixeira%20inox%205l" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('lixeira')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="descanso_1">
                 <img src="imagens/descansopanela.png" alt="Descanso de panela" class="card-img">
                 <div class="card-title">Kit Descanso de panela</div>
-                <a href="https://shopee.com.br/search?keyword=Kit%20descanso%20de%20panela%20silicone%20bambu" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Kit%20descanso%20de%20panela%20silicone%20bambu" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('descanso_1')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="jarra">
                 <img src="imagens/jarradesuco.webp" alt="Jarra de Suco" class="card-img">
                 <div class="card-title">Jarra de Suco</div>
-                <a href="https://shopee.com.br/search?keyword=jarra%20de%20suco" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=jarra%20de%20suco" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('jarra')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="descanso_2">
                 <img src="imagens/descansopanela.png" alt="Descanso de panela" class="card-img">
                 <div class="card-title">Kit Descanso de panela</div>
-                <a href="https://shopee.com.br/search?keyword=Kit%20descanso%20de%20panela%20silicone%20bambu" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://shopee.com.br/search?keyword=Kit%20descanso%20de%20panela%20silicone%20bambu" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('descanso_2')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="edredom">
                 <img src="imagens/edredom.webp" alt="Edredom" class="card-img">
                 <div class="card-title">Edredom</div>
-                <a href="https://br.shp.ee/bWsyVsQn" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/bWsyVsQn" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('edredom')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="prateleira">
                 <img src="imagens/prateleiraparabanheiro.webp" alt="Prateleira para banheiro" class="card-img">
                 <div class="card-title">Prateleira para banheiro</div>
-                <a href="https://br.shp.ee/PAzZPCYd" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/PAzZPCYd" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('prateleira')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="almofada_1">
                 <img src="imagens/almofada.webp" alt="Almofada de Sofá" class="card-img">
                 <div class="card-title">Almofada de Sofá</div>
-                <a href="https://br.shp.ee/bWsyVsQn" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/bWsyVsQn" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('almofada_1')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="vasilha">
                 <img src="imagens/vasilha.webp" alt="Vasilha de Inox" class="card-img">
                 <div class="card-title">Vasilha de Inox</div>
-                <a href="https://br.shp.ee/hNUfjBNh" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/hNUfjBNh" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('vasilha')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="taca_sobremesa">
                 <img src="imagens/tacadesobremesa.webp" alt="Taça Sobremesa" class="card-img">
                 <div class="card-title">Taça Sobremesa</div>
-                <a href="https://br.shp.ee/8bimhUZd" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/8bimhUZd" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('taca_sobremesa')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="ralador">
                 <img src="imagens/ralador.webp" alt="Ralador" class="card-img">
                 <div class="card-title">Ralador</div>
-                <a href="https://br.shp.ee/XuAsabCL" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/XuAsabCL" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('ralador')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="saca_rolhas">
                 <img src="imagens/sacarolhas.webp" alt="Saca Rolhas" class="card-img">
                 <div class="card-title">Saca Rolhas</div>
-                <a href="https://br.shp.ee/wiEtt5nR" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/wiEtt5nR" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('saca_rolhas')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="abridor_lata">
                 <img src="imagens/abridordelata.webp" alt="Abridor de Lata" class="card-img">
                 <div class="card-title">Abridor de Lata</div>
-                <a href="https://br.shp.ee/vYnYRHrG" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/vYnYRHrG" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('abridor_lata')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="cesto_pao">
                 <img src="imagens/cestodepao.webp" alt="Cesto de Pão" class="card-img">
                 <div class="card-title">Cesto de Pão</div>
-                <a href="https://br.shp.ee/tydG5dGg" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/tydG5dGg" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('cesto_pao')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="medidores">
                 <img src="imagens/medidores.webp" alt="Medidores" class="card-img">
                 <div class="card-title">Medidores</div>
-                <a href="https://br.shp.ee/rHnketLH" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/rHnketLH" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('medidores')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="jogo_americano">
                 <img src="imagens/jogoamericano.webp" alt="Jogo Americano" class="card-img">
                 <div class="card-title">Jogo Americano</div>
-                <a href="https://br.shp.ee/o6BoCwHw" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/o6BoCwHw" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('jogo_americano')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="moedor_pimenta">
                 <img src="imagens/moedordepimenta.webp" alt="Moedor de Pimenta" class="card-img">
                 <div class="card-title">Moedor de Pimenta</div>
-                <a href="https://br.shp.ee/bAxRG2hJ" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/bAxRG2hJ" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('moedor_pimenta')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="potes_hermeticos_2">
                 <img src="imagens/potesdecozinha.webp" alt="Potes Herméticos Cozinha" class="card-img">
                 <div class="card-title">Potes Herméticos Cozinha</div>
-                <a href="https://br.shp.ee/7KxqeBkC" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/7KxqeBkC" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('potes_hermeticos_2')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="mantegueira">
                 <img src="imagens/mantegueira.webp" alt="Mantegueira" class="card-img">
                 <div class="card-title">Mantegueira</div>
-                <a href="https://br.shp.ee/ev2zJXno" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/ev2zJXno" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('mantegueira')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="suporte_papel">
                 <img src="imagens/suportepapel.webp" alt="Suporte Papel Toalha" class="card-img">
                 <div class="card-title">Suporte Papel Toalha</div>
-                <a href="https://br.shp.ee/aY5MmEDy" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/aY5MmEDy" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('suporte_papel')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="triturador_alho">
                 <img src="imagens/triturador.webp" alt="Triturador de Alho" class="card-img">
                 <div class="card-title">Triturador de Alho</div>
-                <a href="https://br.shp.ee/Uyj9BEir" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/Uyj9BEir" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('triturador_alho')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
 
-            <li class="card">
+            <li class="card" data-id="almofada_2">
                 <img src="imagens/almofada.webp" alt="Almofada de Sofá" class="card-img">
                 <div class="card-title">Almofada de Sofá</div>
-                <a href="https://br.shp.ee/bWsyVsQn" target="_blank" class="shopee-btn">Ver na Shopee</a>
+                <div class="botoes-container">
+                    <a href="https://br.shp.ee/bWsyVsQn" target="_blank" class="shopee-btn">Ver Exemplo</a>
+                    <button onclick="reservarItem('almofada_2')" class="btn-reservar">🔲 Marcar como presente</button>
+                </div>
             </li>
         </ul>
     </div>
 
+    <script type="module">
+        // Importa os códigos diretos do Google (sem precisar instalar nada)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+        // As suas chaves exclusivas
+        const firebaseConfig = {
+            apiKey: "AIzaSyCRmS1gB3vmMQckPuh2ccgQvp2t_svMKFM",
+            authDomain: "cha-lais-luan.firebaseapp.com",
+            databaseURL: "https://cha-lais-luan-default-rtdb.firebaseio.com",
+            projectId: "cha-lais-luan",
+            storageBucket: "cha-lais-luan.firebasestorage.app",
+            messagingSenderId: "342125782090",
+            appId: "1:342125782090:web:18b7184712ab70b59e72b3",
+            measurementId: "G-8XP2W2CWXZ"
+        };
+
+        // Inicia a comunicação com o Banco de Dados
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const presentesRef = ref(db, 'presentes');
+
+        // FUNÇÃO 1: Fica "vigiando" o banco de dados o tempo todo
+        onValue(presentesRef, (snapshot) => {
+            const presentesNoBanco = snapshot.val() || {};
+
+            // Procura todos os cards da tela
+            document.querySelectorAll('.card').forEach(card => {
+                const idDoCard = card.getAttribute('data-id');
+                
+                // Se o ID deste card estiver marcado como 'true' no banco, ele bloqueia!
+                if (presentesNoBanco[idDoCard]) {
+                    card.classList.add('reservado');
+                }
+            });
+        });
+
+        // FUNÇÃO 2: Quando a pessoa clica no botão de reservar
+        window.reservarItem = function(idDoCard) {
+            const confirmacao = confirm("Deseja marcar este presente como 'Já Escolhido' na lista? Ele ficará reservado para você!");
+            
+            if (confirmacao) {
+                // Prepara a informação para mandar pro banco
+                const atualizacao = {};
+                atualizacao[idDoCard] = true;
+                
+                // Manda pro banco de dados
+                update(presentesRef, atualizacao).then(() => {
+                    alert("Muito obrigado(a) pelo presente! 💙");
+                }).catch((error) => {
+                    alert("Ops! Houve um erro ao reservar. Tente novamente.");
+                    console.error(error);
+                });
+            }
+        };
+    </script>
 </body>
 </html>
